@@ -26,6 +26,7 @@ This repo is meant for the lesson task in workflow 2.4
 - vitest
 - playwright
 - prettier
+- javascript
 
 ## .env
 

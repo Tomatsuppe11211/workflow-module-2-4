@@ -22,6 +22,7 @@ This repo is meant for the lesson task in workflow 2.4
 
 ## Technologies used
 
+- vite
 - vitest
 - playwright
 - prettier

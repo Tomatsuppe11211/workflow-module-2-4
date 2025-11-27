@@ -1,50 +1,31 @@
-name: Deploy to Github pages
+name: Run Unit and E2E Tests
 
-on: 
-    #run this workflow when code is pushed to the main branch
-    push:
-        branches: [main]
-    
-
-    #Allows you to run this workflow manually from the actions tab
-    workflow_dispatch:
-
-#sets permissions needed for Github pages
-permissions:
-    contents: read
-    pages: write
-    id-token: write
-
-#allow only one deployment at a time
-concurrency:
-    group: "pages"
-    cancel-in-progress: true
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
 
 jobs:
-    deploy:
-          environment:
-              name: github-pages
-              url: ${{ steps.deployment.outputs.page_url }}
-          
-          runs-on: ubuntu-latest
+  run-tests:
+    runs-on: ubuntu-latest
 
-          steps:
-              - name: Checkout code
-                uses: actions/checkout@v4
-              
-              - name: Setup Node.js 
-                uses: actions/setup-node@v4
-                with:
-                  node-version: 20
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-              - name: install dependencies
-                run: npm install
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
-              - name: Install Playwright Browsers
-                run: npx playwright install --with-deps
+      - name: Install dependencies
+        run: npm install
 
-              - name: Run Unit Tests
-                run: npm run unit
-              
-              - name: Run e2e tests
-                run: npm run e2e
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run unit tests
+        run: npm run unit
+
+      - name: Run e2e tests
+        run: npm run e2e

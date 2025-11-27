@@ -32,14 +32,19 @@ jobs:
               - name: Checkout code
                 uses: actions/checkout@v4
               
-              - name: Setup Pages
-                uses: actions/configure-pages@v4
-
-              - name: upload artifact
-                uses: actions/upload-pages-artifact@v3
+              - name: Setup Node.js 
+                uses: actions/setup-node@v4
                 with:
-                  path: "." # upload the entire repository
+                  node-version: 20
+
+              - name: install dependencies
+                run: npm install
+
+              - name: Install Playwright Browsers
+                run: npx playwright install --with-deps
+
+              - name: Run Unit Tests
+                run: npm run unit
               
-              - name: Deploy to Github Pages
-                id: deployment
-                uses: actions/deploy-pages@v4
+              - name: Run e2e tests
+                run: npm run e2e

@@ -1,0 +1,35 @@
+{
+  "name": "workflow-module-2-4",
+  "version": "1.0.0",
+  "description": "This repo is meant for the lesson task in workflow 2.4",
+  "main": "index.js",
+  "scripts": {
+    "unit": "vitest",
+    "e2e": "npx playwright test",
+    "e2e:ui": "npx playwright test --ui",
+    "e2e:headed": "npx playwright test --headed",
+    "e2e:debug": "npx playwright test --debug",
+    "e2e:report": "npx playwright show-report",
+    "rewrite": "npx prettier . --write"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tomatsuppe11211/workflow-module-2-4.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tomatsuppe11211/workflow-module-2-4/issues"
+  },
+  "homepage": "https://github.com/Tomatsuppe11211/workflow-module-2-4#readme",
+  "dependencies": {
+    "playwright": "^1.57.0",
+    "prettier": "^3.7.1",
+    "vitest": "^3.2.4"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "@types/node": "^24.10.1"
+  }
+}
